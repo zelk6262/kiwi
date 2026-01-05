@@ -3504,7 +3504,7 @@ OnTeleport =
             OnTeleport:Disconnect()
         else
             getfenv().queue_on_teleport(
-                'getfenv().loadstring(game:HttpGet("https://raw.githubusercontent.com/kiwi/Open-Aimbot/master/source.lua", true))()'
+                'getfenv().loadstring(game:HttpGet("https://raw.githubusercontent.com/zelk6262/kiwi/refs/heads/main/kiwi.lua", true))()'
             )
             OnTeleport:Disconnect()
         end
