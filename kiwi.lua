@@ -1980,6 +1980,91 @@ do
         }
     )
 
+    
+    --// Create or reuse ColorCorrectionEffect
+    local ColorCorrection = Lighting:FindFirstChild("FluentColorCorrection") or Instance.new("ColorCorrectionEffect")
+
+    ColorCorrection.Name = "FluentColorCorrection"
+    ColorCorrection.Parent = Lighting
+
+    -- Default values
+    ColorCorrection.Enabled = false
+    ColorCorrection.Brightness = 0
+    ColorCorrection.Contrast = 0
+    ColorCorrection.Saturation = 0
+    ColorCorrection.TintColor = Color3.fromRGB(255, 255, 255)
+
+    --// Enable toggle
+    WorldSection:AddToggle(
+        "CC_Enabled",
+        {
+            Title = "Color Correction",
+            Description = "Enable or disable color correction",
+            Default = false,
+            Callback = function(Value)
+                ColorCorrection.Enabled = Value
+            end
+        }
+    )
+
+    --// Tint color picker
+    WorldSection:AddColorpicker(
+        "CC_Tint",
+        {
+            Title = "Tint Color",
+            Description = "Applies a color tint to the world",
+            Default = Color3.fromRGB(255, 255, 255),
+            Callback = function(Value)
+                ColorCorrection.TintColor = Value
+            end
+        }
+    )
+
+    --// Brightness slider
+    WorldSection:AddSlider(
+        "CC_Brightness",
+        {
+            Title = "Brightness",
+            Min = -1,
+            Max = 1,
+            Default = 0,
+            Rounding = 2,
+            Callback = function(Value)
+                ColorCorrection.Brightness = Value
+            end
+        }
+    )
+
+    --// Contrast slider
+    WorldSection:AddSlider(
+        "CC_Contrast",
+        {
+            Title = "Contrast",
+            Min = -1,
+            Max = 1,
+            Default = 0,
+            Rounding = 2,
+            Callback = function(Value)
+                ColorCorrection.Contrast = Value
+            end
+        }
+    )
+
+    --// Saturation slider
+    WorldSection:AddSlider(
+        "CC_Saturation",
+        {
+            Title = "Saturation",
+            Min = -1,
+            Max = 1,
+            Default = 0,
+            Rounding = 2,
+            Callback = function(Value)
+                ColorCorrection.Saturation = Value
+            end
+        }
+    )
+
     Tabs.Settings = Window:AddTab({Title = "Settings", Icon = "settings"})
 
     local UISection = Tabs.Settings:AddSection("UI")
