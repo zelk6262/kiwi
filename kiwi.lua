@@ -1931,140 +1931,6 @@ do
         ShowWarning = true
     end
 
-    Tabs.Extras = Window:AddTab({Title = "Extras", Icon = "globe"})
-
-    local PlayerSection = Tabs.Extras:AddSection("Player")
-    local WorldSection = Tabs.Extras:AddSection("World")
-
-    local Players = game:GetService("Players")
-    local Lighting = game:GetService("Lighting")
-    local LocalPlayer = Players.LocalPlayer
-
-    local function GetHumanoid()
-        local character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
-        return character:WaitForChild("Humanoid")
-    end
-
-    -- WalkSpeed slider
-    PlayerSection:AddSlider(
-        "WalkSpeed",
-        {
-            Title = "Walk Speed",
-            Description = "",
-            Min = 8,
-            Max = 100,
-            Default = 16,
-            Rounding = 0,
-            Callback = function(Value)
-                local humanoid = GetHumanoid()
-                humanoid.WalkSpeed = Value
-            end
-        }
-    )
-
-    -- JumpPower slider
-    PlayerSection:AddSlider(
-        "JumpPower",
-        {
-            Title = "Jump Power",
-            Description = "", -- self explanatory
-            Min = 25,
-            Max = 150,
-            Default = 50,
-            Rounding = 0,
-            Callback = function(Value)
-                local humanoid = GetHumanoid()
-                humanoid.UseJumpPower = true
-                humanoid.JumpPower = Value
-            end
-        }
-    )
-
-    
-    --// Create or reuse ColorCorrectionEffect
-    local ColorCorrection = Lighting:FindFirstChild("FluentColorCorrection") or Instance.new("ColorCorrectionEffect")
-
-    ColorCorrection.Name = "FluentColorCorrection"
-    ColorCorrection.Parent = Lighting
-
-    -- Default values
-    ColorCorrection.Enabled = false
-    ColorCorrection.Brightness = 0
-    ColorCorrection.Contrast = 0
-    ColorCorrection.Saturation = 0
-    ColorCorrection.TintColor = Color3.fromRGB(255, 255, 255)
-
-    --// Enable toggle
-    WorldSection:AddToggle(
-        "CC_Enabled",
-        {
-            Title = "Color Correction",
-            Description = "Enable or disable color correction",
-            Default = false,
-            Callback = function(Value)
-                ColorCorrection.Enabled = Value
-            end
-        }
-    )
-
-    --// Tint color picker
-    WorldSection:AddColorpicker(
-        "CC_Tint",
-        {
-            Title = "Tint Color",
-            Description = "Applies a color tint to the world",
-            Default = Color3.fromRGB(255, 255, 255),
-            Callback = function(Value)
-                ColorCorrection.TintColor = Value
-            end
-        }
-    )
-
-    --// Brightness slider
-    WorldSection:AddSlider(
-        "CC_Brightness",
-        {
-            Title = "Brightness",
-            Min = -1,
-            Max = 1,
-            Default = 0,
-            Rounding = 2,
-            Callback = function(Value)
-                ColorCorrection.Brightness = Value
-            end
-        }
-    )
-
-    --// Contrast slider
-    WorldSection:AddSlider(
-        "CC_Contrast",
-        {
-            Title = "Contrast",
-            Min = -1,
-            Max = 1,
-            Default = 0,
-            Rounding = 2,
-            Callback = function(Value)
-                ColorCorrection.Contrast = Value
-            end
-        }
-    )
-
-    --// Saturation slider
-    WorldSection:AddSlider(
-        "CC_Saturation",
-        {
-            Title = "Saturation",
-            Min = -1,
-            Max = 1,
-            Default = 0,
-            Rounding = 2,
-            Callback = function(Value)
-                ColorCorrection.Saturation = Value
-            end
-        }
-    )
-
     Tabs.Settings = Window:AddTab({Title = "Settings", Icon = "settings"})
 
     local UISection = Tabs.Settings:AddSection("UI")
@@ -2525,11 +2391,8 @@ do
         elseif ShowWarning then
             Window:Dialog(
                 {
-                    Title = "Alert",
-                    Content = string.format(
-                        "Expert Checks failed to load!",
-                        string.format(MonthlyLabels[os.date("*t").month], "kiwi")
-                    ),
+                    Title = "kiwi",
+                    Content = string.format("loaded", string.format(MonthlyLabels[os.date("*t").month], "kiwi")),
                     Buttons = {
                         {
                             Title = "Confirm"
@@ -3505,7 +3368,7 @@ OnTeleport =
             OnTeleport:Disconnect()
         else
             getfenv().queue_on_teleport(
-                'getfenv().loadstring(game:HttpGet("https://raw.githubusercontent.com/zelk6262/kiwi/refs/heads/main/kiwi.lua", true))()'
+                'getfenv().loadstring(game:HttpGet("https://raw.githubusercontent.com/kiwi/Open-Aimbot/master/source.lua", true))()'
             )
             OnTeleport:Disconnect()
         end
