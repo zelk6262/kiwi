@@ -325,7 +325,7 @@ do
         {
             Title = string.format(
                 "%s",
-                string.format(MonthlyLabels[os.date("*t").month], "kiwi"),
+                string.format(MonthlyLabels[os.date("*t").month], "Kiwi"),
                 #Status > 0 and Status or ""
             ),
             SubTitle = "",
