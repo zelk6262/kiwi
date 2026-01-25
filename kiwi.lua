@@ -51,8 +51,8 @@ function InterfaceManager:ImportSettings()
     pcall(
         function()
             if
-                not DEBUG and getfenv().isfile and getfenv().readfile and getfenv().isfile("UISettings.kiwi") and
-                    getfenv().readfile("UISettings.kiwi")
+                not DEBUG and getfenv().isfile and getfenv().readfile and getfenv().isfile("UISettings.") and
+                    getfenv().readfile("UISettings.")
              then
                 for Key, Value in next, HttpService:JSONDecode(getfenv().readfile("UISettings.kiwi")) do
                     UISettings[Key] = Value
@@ -552,7 +552,7 @@ do
                 AimPartDropdown:SetValues(Configuration.AimPartDropdownValues)
                 Window:Dialog(
                     {
-                        Title = string.format(MonthlyLabels[os.date("*t").month], "kiwi"),
+                        Title = string.format(MonthlyLabels[os.date("*t").month], "Kiwi"),
                         Content = Items == 0 and "Nothing has been cleared!" or
                             Items == 1 and "1 Item has been cleared!" or
                             string.format("%s Items have been cleared!", Items),
@@ -853,7 +853,7 @@ do
                 SpinPartDropdown:SetValues(Configuration.SpinPartDropdownValues)
                 Window:Dialog(
                     {
-                        Title = string.format(MonthlyLabels[os.date("*t").month], "kiwi"),
+                        Title = string.format(MonthlyLabels[os.date("*t").month], "Kiwi"),
                         Content = Items == 0 and "Nothing has been cleared!" or
                             Items == 1 and "1 Item has been cleared!" or
                             string.format("%s Items have been cleared!", Items),
@@ -1317,7 +1317,7 @@ do
                 IgnoredPlayersDropdown:SetValue({})
                 Window:Dialog(
                     {
-                        Title = string.format(MonthlyLabels[os.date("*t").month], "kiwi"),
+                        Title = string.format(MonthlyLabels[os.date("*t").month], "Kiwi"),
                         Content = Items == 0 and "Nothing has been deselected!" or
                             Items == 1 and "1 Item has been deselected!" or
                             string.format("%s Items have been deselected!", Items),
@@ -1350,7 +1350,7 @@ do
                 IgnoredPlayersDropdown:SetValues(Configuration.IgnoredPlayersDropdownValues)
                 Window:Dialog(
                     {
-                        Title = string.format(MonthlyLabels[os.date("*t").month], "kiwi"),
+                        Title = string.format(MonthlyLabels[os.date("*t").month], "Kiwi"),
                         Content = Items == 0 and "Nothing has been cleared!" or
                             Items == 1 and "1 Item has been cleared!" or
                             string.format("%s Items have been cleared!", Items),
@@ -1491,7 +1491,7 @@ do
                 TargetPlayersDropdown:SetValue({})
                 Window:Dialog(
                     {
-                        Title = string.format(MonthlyLabels[os.date("*t").month], "kiwi"),
+                        Title = string.format(MonthlyLabels[os.date("*t").month], "Kiwi"),
                         Content = Items == 0 and "Nothing has been deselected!" or
                             Items == 1 and "1 Item has been deselected!" or
                             string.format("%s Items have been deselected!", Items),
@@ -1524,7 +1524,7 @@ do
                 TargetPlayersDropdown:SetValues(Configuration.TargetPlayersDropdownValues)
                 Window:Dialog(
                     {
-                        Title = string.format(MonthlyLabels[os.date("*t").month], "kiwi"),
+                        Title = string.format(MonthlyLabels[os.date("*t").month], "Kiwi"),
                         Content = Items == 0 and "Nothing has been cleared!" or
                             Items == 1 and "1 Item has been cleared!" or
                             string.format("%s Items have been cleared!", Items),
@@ -2069,7 +2069,7 @@ do
                 InterfaceManager:ExportSettings()
                 Window:Dialog(
                     {
-                        Title = string.format(MonthlyLabels[os.date("*t").month], "kiwi"),
+                        Title = string.format(MonthlyLabels[os.date("*t").month], "Kiwi"),
                         Content = "Changes will take effect after the Restart!",
                         Buttons = {
                             {
@@ -2362,14 +2362,14 @@ do
     else
         DiscordWikiSection:AddParagraph(
             {
-                Title = "kiwi",
+                Title = "Kiwi",
                 Content = "unknown error"
             }
         )
 
         DiscordWikiSection:AddParagraph(
             {
-                Title = "kiwi",
+                Title = "Kiwi",
                 Content = "unknown error"
             }
         )
@@ -2391,8 +2391,8 @@ do
         elseif ShowWarning then
             Window:Dialog(
                 {
-                    Title = "kiwi",
-                    Content = string.format("loaded", string.format(MonthlyLabels[os.date("*t").month], "kiwi")),
+                    Title = "Kiwi",
+                    Content = string.format("Loaded", string.format(MonthlyLabels[os.date("*t").month], "Kiwi")),
                     Buttons = {
                         {
                             Title = "Confirm"
@@ -2403,8 +2403,8 @@ do
         else
             Window:Dialog(
                 {
-                    Title = string.format("kiwi", string.format(MonthlyLabels[os.date("*t").month], "kiwi")),
-                    Content = "kiwi v loaded",
+                    Title = string.format("Kiwi", string.format(MonthlyLabels[os.date("*t").month], "Kiwi")),
+                    Content = "Kiwi v loaded",
                     Buttons = {
                         {
                             Title = "Confirm"
@@ -2422,7 +2422,7 @@ local function Notify(Message)
     if Fluent and typeof(Message) == "string" then
         Fluent:Notify(
             {
-                Title = string.format("%s 🔥FREE🔥", string.format(MonthlyLabels[os.date("*t").month], "kiwi")),
+                Title = string.format("", string.format(MonthlyLabels[os.date("*t").month], "Kiwi")),
                 Content = Message,
                 SubContent = "By @ttwiz_z",
                 Duration = 1.5
@@ -2431,7 +2431,7 @@ local function Notify(Message)
     end
 end
 
-Notify("✨Upgrade to unlock all Options✨")
+Notify("")
 
 --! Fields Handler
 
@@ -3368,7 +3368,7 @@ OnTeleport =
             OnTeleport:Disconnect()
         else
             getfenv().queue_on_teleport(
-                'getfenv().loadstring(game:HttpGet("https://raw.githubusercontent.com/kiwi/Open-Aimbot/master/source.lua", true))()'
+                'getfenv().loadstring(game:HttpGet("https://raw.githubusercontent.com/zelk6262/kiwi/refs/heads/main/kiwi.lua", true))()'
             )
             OnTeleport:Disconnect()
         end
